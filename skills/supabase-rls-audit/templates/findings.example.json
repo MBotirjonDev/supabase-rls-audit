@@ -1,0 +1,46 @@
+{
+  "target": "example_shop",
+  "audited_commit": "a1b2c3d",
+  "generated_at": "2026-10-29T09:00:00Z",
+  "findings": [
+    {
+      "id": "F-1",
+      "verdict": "confirmed",
+      "area": "tables",
+      "title": "orders table has no Row Level Security",
+      "severity": "critical",
+      "cwe": "CWE-862",
+      "leads": ["RLS-TBL-001"],
+      "location": { "file": "supabase/migrations/20240101000000_init.sql", "line": 12 },
+      "attacker": "Anyone with the anon key, which ships in the Flutter app. No account needed.",
+      "trace": [
+        "supabase/migrations/20240101000000_init.sql:12 creates public.orders (user_id, total, address); no migration enables RLS",
+        "Live check: pg_class.relrowsecurity = false for public.orders (query from checks/TABLES.md, run by the developer)",
+        "GET /rest/v1/orders?select=* with the anon key returns every customer's address; DELETE is also allowed"
+      ],
+      "impact": "Disclosure of every customer's delivery address and order history, and the ability to change or delete any order.",
+      "fix": "New migration: alter table public.orders enable row level security; create policy \"Read own orders\" on public.orders for select to authenticated using ((select auth.uid()) = user_id); create policy \"Create own orders\" on public.orders for insert to authenticated with check ((select auth.uid()) = user_id);",
+      "verified_by": "verifier-2 (fresh pass over all migrations and the live pg_class result)"
+    },
+    {
+      "id": "F-2",
+      "verdict": "needs_validation",
+      "area": "views",
+      "title": "order_summary view may bypass RLS",
+      "cwe": "CWE-285",
+      "leads": ["RLS-VIEW-001"],
+      "location": { "file": "supabase/migrations/20240101000000_init.sql", "line": 44 },
+      "unresolved": "Whether the view was later recreated with security_invoker = true from the dashboard; run: select reloptions from pg_class where relname = 'order_summary';"
+    },
+    {
+      "id": "F-3",
+      "verdict": "rejected",
+      "area": "policies",
+      "title": "products readable by anyone",
+      "cwe": "CWE-284",
+      "leads": ["RLS-POL-001"],
+      "location": { "file": "supabase/migrations/20240101000000_init.sql", "line": 70 },
+      "rejection_reason": "Public product catalogue by design; columns are name, price, image_url, description. No personal or internal data."
+    }
+  ]
+}

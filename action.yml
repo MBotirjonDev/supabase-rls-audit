@@ -1,0 +1,58 @@
+name: 'Supabase RLS Audit'
+description: 'Zero-dependency analysis of Supabase migrations: tables without RLS, open policies, user_metadata, security definer views and functions, storage, service_role keys.'
+author: 'MBotirjonDev'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  path:
+    description: 'Path to the project (or monorepo root) to scan'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Fail the job when a lead at or above this severity is found: info | low | medium | high | critical | none'
+    required: false
+    default: 'high'
+  min-severity:
+    description: 'Ignore leads below this severity'
+    required: false
+    default: 'low'
+  output:
+    description: 'Where to write the JSON leads file'
+    required: false
+    default: 'supabase-rls-leads.json'
+  sarif:
+    description: 'Optional path for a SARIF file (upload it with github/codeql-action/upload-sarif)'
+    required: false
+    default: ''
+  schemas:
+    description: 'Comma-separated schemas exposed by the Data API'
+    required: false
+    default: 'public'
+
+outputs:
+  leads-file:
+    description: 'Path to the JSON leads file'
+    value: ${{ inputs.output }}
+  sarif-file:
+    description: 'Path to the SARIF file, if requested'
+    value: ${{ inputs.sarif }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run supabase-rls-audit analyzer
+      shell: bash
+      env:
+        RLS_PATH: ${{ inputs.path }}
+        RLS_FAIL_ON: ${{ inputs.fail-on }}
+        RLS_MIN: ${{ inputs.min-severity }}
+        RLS_OUT: ${{ inputs.output }}
+        RLS_SARIF: ${{ inputs.sarif }}
+        RLS_SCHEMAS: ${{ inputs.schemas }}
+      run: |
+        args=("$RLS_PATH" --out "$RLS_OUT" --min-severity "$RLS_MIN" --schemas "$RLS_SCHEMAS")
+        if [ -n "$RLS_SARIF" ]; then args+=(--sarif "$RLS_SARIF"); fi
+        if [ "$RLS_FAIL_ON" != "none" ]; then args+=(--fail-on "$RLS_FAIL_ON"); fi
+        node "${{ github.action_path }}/skills/supabase-rls-audit/scripts/audit.cjs" "${args[@]}"

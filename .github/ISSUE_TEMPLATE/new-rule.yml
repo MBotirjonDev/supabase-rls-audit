@@ -1,0 +1,24 @@
+name: New rule
+description: Propose a new RLS / Supabase exposure check
+labels: [new-rule]
+body:
+  - type: textarea
+    id: bug
+    attributes:
+      label: The pattern and what an attacker gains
+    validations:
+      required: true
+  - type: textarea
+    id: bad
+    attributes:
+      label: Vulnerable SQL (smallest possible)
+      render: sql
+    validations:
+      required: true
+  - type: textarea
+    id: good
+    attributes:
+      label: Safe version
+      render: sql
+    validations:
+      required: true
