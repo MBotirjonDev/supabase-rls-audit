@@ -1,5 +1,5 @@
 name: 'Supabase RLS Audit'
-description: 'Zero-dependency analysis of Supabase migrations: tables without RLS, open policies, user_metadata, security definer views and functions, storage, service_role keys.'
+description: 'Audits Supabase migrations: tables without RLS, open policies, definer views and functions, storage, service_role leaks.'
 author: 'MBotirjonDev'
 branding:
   icon: 'shield'
