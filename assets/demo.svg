@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="729" viewBox="0 0 1280 729" role="img" aria-label="Real output on the intentionally vulnerable test fixture">
+<rect width="1280" height="729" rx="14" fill="#0D1117"/>
+<rect width="1280" height="48" rx="14" fill="#161B22"/><rect y="34" width="1280" height="14" fill="#161B22"/>
+<circle cx="28" cy="24" r="7" fill="#FF5F57"/><circle cx="52" cy="24" r="7" fill="#FEBC2E"/><circle cx="76" cy="24" r="7" fill="#28C840"/>
+<text x="640.0" y="30" text-anchor="middle" font-family="Inter, 'Segoe UI', -apple-system, Helvetica, Arial, sans-serif" font-size="15" fill="#8B949E">supabase-rls-audit — migration replay</text>
+<g font-family="'JetBrains Mono', SFMono-Regular, Consolas, 'DejaVu Sans Mono', Menlo, monospace" font-size="17" xml:space="preserve">
+<text x="40" y="100"><tspan fill="#7EE787">➜</tspan><tspan fill="#79C0FF"> my_saas</tspan><tspan fill="#E6EDF3"> node audit.cjs .</tspan></text>
+<text x="40" y="141.6" fill="#8B949E">supabase-rls-audit · my_saas</text>
+<text x="40" y="180.6"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">RLS-KEY-002</tspan><tspan fill="#E6EDF3">  service_role key exposed to the client bundle</tspan></text>
+<text x="133" y="206.6" fill="#79C0FF">lib/supabase.dart:5<tspan fill="#6E7681">   const serviceRoleKey = String.fromEnvironment('SUPABASE_SERVICE_ROLE_KEY…</tspan></text>
+<text x="40" y="241.7"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">RLS-TBL-001</tspan><tspan fill="#E6EDF3">  Table in an exposed schema without Row Level Security</tspan></text>
+<text x="133" y="267.7" fill="#79C0FF">supabase/migrations/20240101000000_init.sql:12<tspan fill="#6E7681">   create table public.orders ( id bigint genera…</tspan></text>
+<text x="40" y="302.8"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">RLS-TBL-002</tspan><tspan fill="#E6EDF3">  RLS disabled by a later migration</tspan></text>
+<text x="133" y="328.8" fill="#79C0FF">supabase/migrations/20240201000000_debug.sql:2<tspan fill="#6E7681">   alter table public.invoices disable row level…</tspan></text>
+<text x="40" y="363.90000000000003"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">RLS-POL-006</tspan><tspan fill="#E6EDF3">  Write policy for anonymous users</tspan></text>
+<text x="133" y="389.90000000000003" fill="#79C0FF">supabase/migrations/20240101000000_init.sql:21<tspan fill="#6E7681">   create policy "Anyone can send" on public.mes…</tspan></text>
+<text x="40" y="425.00000000000006"><tspan fill="#FFA657" font-weight="700">HIGH     </tspan><tspan fill="#D2A8FF">RLS-POL-001</tspan><tspan fill="#E6EDF3">  Policy lets anyone read every row (using true)</tspan></text>
+<text x="133" y="451.00000000000006" fill="#79C0FF">supabase/migrations/20240101000000_init.sql:9<tspan fill="#6E7681">   create policy "Profiles are public" on public.…</tspan></text>
+<text x="40" y="486.1000000000001"><tspan fill="#FFA657" font-weight="700">HIGH     </tspan><tspan fill="#D2A8FF">RLS-POL-004</tspan><tspan fill="#E6EDF3">  Policy trusts user-editable user_metadata</tspan></text>
+<text x="133" y="512.1000000000001" fill="#79C0FF">supabase/migrations/20240101000000_init.sql:37<tspan fill="#6E7681">   create policy "Admins read projects" on publi…</tspan></text>
+<text x="40" y="547.2000000000002"><tspan fill="#FFA657" font-weight="700">HIGH     </tspan><tspan fill="#D2A8FF">RLS-VIEW-001</tspan><tspan fill="#E6EDF3">  View bypasses RLS (security definer view)</tspan></text>
+<text x="133" y="573.2000000000002" fill="#79C0FF">supabase/migrations/20240101000000_init.sql:44<tspan fill="#6E7681">   create view public.order_summary as select us…</tspan></text>
+<text x="40" y="608.3000000000002"><tspan fill="#E3B341" font-weight="700">MEDIUM   </tspan><tspan fill="#D2A8FF">RLS-FN-002</tspan><tspan fill="#E6EDF3">  SECURITY DEFINER function callable through the API</tspan></text>
+<text x="133" y="634.3000000000002" fill="#79C0FF">supabase/migrations/20240101000000_init.sql:50<tspan fill="#6E7681">   create function public.get_all_emails() retur…</tspan></text>
+<text x="40" y="669.4000000000002"><tspan fill="#E6EDF3" font-weight="700">19 leads</tspan><tspan fill="#8B949E">  (</tspan><tspan fill="#FF7B72">critical 5</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#FFA657">high 4</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#E3B341">medium 5</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#79C0FF">low 0</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#8B949E">info 5</tspan><tspan fill="#8B949E">)  →  agent validates each lead before reporting</tspan></text>
+</g></svg>

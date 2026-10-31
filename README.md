@@ -1,6 +1,8 @@
 <div align="center">
 
-# Supabase RLS Audit
+<img src="assets/banner.png" alt="Supabase RLS Audit" width="100%">
+
+<h1>Supabase RLS Audit</h1>
 
 <h3>Find the table your anon key can read before someone else does.</h3>
 
@@ -22,6 +24,9 @@ plus a zero-dependency analyzer that replays your migrations, for your laptop an
 > ```
 > audit the RLS policies in this supabase project
 > ```
+
+<p align="center"><img src="assets/demo.png" alt="Real output of Supabase RLS Audit on the intentionally vulnerable test fixture" width="100%"></p>
+<p align="center"><sub>Real output on the intentionally vulnerable fixture in <code>tests/fixtures/vuln_app</code>.</sub></p>
 
 ## Why this exists
 
@@ -191,6 +196,24 @@ AI agent the context to review policy *logic* that no linter can judge.
 - [ ] Realtime: publications on tables with weak SELECT policies
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Part of a toolkit
+
+Four zero-dependency agent skills that share the same lead → validate → report workflow.
+They work well together on a typical Flutter + Supabase + Telegram stack.
+
+| Skill | What it covers |
+|---|---|
+| [Flutter Audit Agent](https://github.com/MBotirjonDev/flutter-audit-agent) | Security audit for Flutter & Dart apps: secrets, storage, TLS, WebViews, Firebase rules |
+| [Telegram Mini App Audit](https://github.com/MBotirjonDev/telegram-miniapp-audit) | Security audit for Telegram bots and Mini Apps: initData, bot tokens, webhooks, payments |
+| **[Supabase RLS Audit](https://github.com/MBotirjonDev/supabase-rls-audit)** (you are here) | Row Level Security audit: open tables, weak policies, definer views and functions, storage |
+| [Flutter Release Checker](https://github.com/MBotirjonDev/flutter-release-checker) | Finds what gets Flutter apps rejected by Google Play and the App Store |
+
+## Star history
+
+If this saved you a leak or a rejected upload, a ⭐ helps other developers find it.
+
+[![Star History Chart](https://api.star-history.com/svg?repos=MBotirjonDev/supabase-rls-audit&type=Date)](https://star-history.com/#MBotirjonDev/supabase-rls-audit&Date)
 
 ## License
 

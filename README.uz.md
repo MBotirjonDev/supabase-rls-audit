@@ -1,3 +1,9 @@
+<div align="center">
+
+<img src="assets/banner.png" alt="Supabase RLS Audit" width="100%">
+
+</div>
+
 # Supabase RLS Audit 🇺🇿
 
 **Anon kalitingiz o'qiy oladigan jadvalni boshqalardan oldin toping.**
@@ -40,3 +46,11 @@ Natijada har bir topilma uchun hujumchi yuboradigan so'rov va uni tuzatadigan **
 yoziladi.
 
 MIT litsenziyasi. Supabase bilan bog'liq emas.
+
+## Boshqa skill'lar
+
+Shu muallifning boshqa bepul agent skill'lari:
+
+- [Flutter Audit Agent](https://github.com/MBotirjonDev/flutter-audit-agent) — Security audit for Flutter & Dart apps: secrets, storage, TLS, WebViews, Firebase rules
+- [Telegram Mini App Audit](https://github.com/MBotirjonDev/telegram-miniapp-audit) — Security audit for Telegram bots and Mini Apps: initData, bot tokens, webhooks, payments
+- [Flutter Release Checker](https://github.com/MBotirjonDev/flutter-release-checker) — Finds what gets Flutter apps rejected by Google Play and the App Store
